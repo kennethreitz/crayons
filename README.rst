@@ -18,7 +18,7 @@ Usage is simple
 ::
 
     # red is red, white is white.
-    >>> print '{red} white'.format(red=crayons.red('red'))
+    >>> print '{} white'.format(crayons.red('red'))
     red white
 
 That's it!
