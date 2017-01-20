@@ -8,12 +8,14 @@ Features
 --------
 
 - If you call ``disable()``, all future calls to colors will be ignored.
-- If the current process is not in a TTY, no colors will be displayed.
+- If the current process is not in a TTY (e.g. being piped), no colors will be displayed.
 - Length of ColoredStrings can be properly calculated.
 - Powered by colorama.
 
 Usage is simple
 ---------------
+
+::
 
     # red is red, white is white.
     >>> print '{red} white'.format(red=crayons.red('red'))
