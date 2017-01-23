@@ -4,6 +4,8 @@ Crayons: Text UI colors for Python.
 This module is really simple, it gives you colored strings for terminal
 usage. Included colors are ``red``, ``green``, ``yellow``, ``blue``, ``black``, ``magenta``, ``cyan``, ``white``, ``clean``, and ``disable``.
 
+Arguments in include `always=True` and `bold=True`. 
+
 Features
 --------
 
