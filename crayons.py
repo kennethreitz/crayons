@@ -19,10 +19,10 @@ import colorama
 __all__ = (
     'red', 'green', 'yellow', 'blue',
     'black', 'magenta', 'cyan', 'white',
-    'clean', 'disable'
+    'clean', 'disable', 'enable'
 )
 
-COLORS = __all__[:-2]
+COLORS = __all__[:-3]
 
 if 'get_ipython' in dir():
     """
@@ -150,3 +150,9 @@ def disable():
     global DISABLE_COLOR
 
     DISABLE_COLOR = True
+
+def enable():
+    """Enables colors."""
+    global DISABLE_COLOR
+
+    DISABLE_COLOR = False
