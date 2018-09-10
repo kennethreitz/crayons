@@ -27,7 +27,7 @@ usage. Included colors are ``red``, ``green``, ``yellow``, ``blue``, ``black``, 
 .. image:: https://d3vv6lp55qjaqc.cloudfront.net/items/3q0I293q1z293R3a3a3n/Screen%20Shot%202017-01-23%20at%206.00.02%20PM.png?X-CloudApp-Visitor-Id=2577
 
 
-Arguments in include ``always=True`` and ``bold=True``. 
+Arguments include ``always=True`` and ``bold=True``. 
 
 Features
 --------
