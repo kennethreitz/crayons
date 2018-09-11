@@ -123,42 +123,15 @@ def clean(s):
 
     return txt
 
+_colors = {x: x.upper() for x in __all__[:-3]}
+_colors['normal'] = 'RESET'
 
-def normal(string, always=False, bold=False):
-    return ColoredString('RESET', string, always_color=always, bold=bold)
+for key, val in _colors.items():
+    function = eval(
+        'lambda s, always=False, bold=False: ColoredString("{}", s, always_color=always, bold=bold)'.format(val))
+    locals()[key] = function
 
-
-def black(string, always=False, bold=False):
-    return ColoredString('BLACK', string, always_color=always, bold=bold)
-
-
-def red(string, always=False, bold=False):
-    return ColoredString('RED', string, always_color=always, bold=bold)
-
-
-def green(string, always=False, bold=False):
-    return ColoredString('GREEN', string, always_color=always, bold=bold)
-
-
-def yellow(string, always=False, bold=False):
-    return ColoredString('YELLOW', string, always_color=always, bold=bold)
-
-
-def blue(string, always=False, bold=False):
-    return ColoredString('BLUE', string, always_color=always, bold=bold)
-
-
-def magenta(string, always=False, bold=False):
-    return ColoredString('MAGENTA', string, always_color=always, bold=bold)
-
-
-def cyan(string, always=False, bold=False):
-    return ColoredString('CYAN', string, always_color=always, bold=bold)
-
-
-def white(string, always=False, bold=False):
-    return ColoredString('WHITE', string, always_color=always, bold=bold)
-
+del key, val, _colors, function
 
 def disable():
     """Disables colors."""
