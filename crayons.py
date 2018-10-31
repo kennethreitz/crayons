@@ -34,7 +34,7 @@ if 'get_ipython' in dir():
 else:
     DISABLE_COLOR = False
 
-if os.environ["TERM"] == "dumb":
+if os.getenv("TERM") == "dumb":
     DISABLE_COLOR = True
 
 class ColoredString(object):
