@@ -115,7 +115,7 @@ class ColoredString(object):
 
 
 def clean(s):
-    strip = re.compile("([^-_a-zA-Z0-9!@#%&=,/'\";:~`\$\^\*\(\)\+\[\]\.\{\}\|\?\<\>\\]+|[^\s]+)")
+    strip = re.compile(r"([^-_a-zA-Z0-9!@#%&=,/'\";:~`\$\^\*\(\)\+\[\]\.\{\}\|\?\<\>\\]+|[^\s]+)")
     txt = strip.sub('', str(s))
 
     strip = re.compile(r'\[\d+m')
