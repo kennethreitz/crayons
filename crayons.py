@@ -34,6 +34,8 @@ if 'get_ipython' in dir():
 else:
     DISABLE_COLOR = False
 
+if os.getenv("TERM") == "dumb":
+    DISABLE_COLOR = True
 
 class ColoredString(object):
     """Enhanced string for __len__ operations on Colored output."""
