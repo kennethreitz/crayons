@@ -22,6 +22,7 @@ __all__ = (
     'clean', 'disable'
 )
 
+colorama.init()
 COLORS = __all__[:-2]
 
 if 'get_ipython' in dir():
