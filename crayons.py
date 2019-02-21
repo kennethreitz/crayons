@@ -12,9 +12,9 @@ import os
 import re
 import sys
 
-PY3 = sys.version_info[0] >= 3
-
 import colorama
+
+PY3 = sys.version_info[0] >= 3
 
 __all__ = (
     'red', 'green', 'yellow', 'blue',
@@ -22,7 +22,8 @@ __all__ = (
     'clean', 'disable', 'enable'
 )
 
-COLORS = __all__[:-3]
+colorama.init()
+COLORS = __all__[:-2]
 
 if 'get_ipython' in dir():
     """
@@ -34,6 +35,8 @@ if 'get_ipython' in dir():
 else:
     DISABLE_COLOR = False
 
+if os.getenv("TERM") == "dumb":
+    DISABLE_COLOR = True
 
 class ColoredString(object):
     """Enhanced string for __len__ operations on Colored output."""
@@ -67,7 +70,11 @@ class ColoredString(object):
     @property
     def color_str(self):
         style = 'BRIGHT' if self.bold else 'NORMAL'
-        c = '%s%s%s%s%s' % (getattr(colorama.Fore, self.color), getattr(colorama.Style, style), self.s, colorama.Fore.RESET, getattr(colorama.Style, 'NORMAL'))
+        c = '%s%s%s%s%s' % (getattr(colorama.Fore, self.color),
+                            getattr(colorama.Style, style),
+                            self.s,
+                            colorama.Fore.RESET,
+                            getattr(colorama.Style, 'NORMAL'))
 
         if self.always_color:
             return c
@@ -75,7 +82,6 @@ class ColoredString(object):
             return c
         else:
             return self.s
-
 
     def __len__(self):
         return len(self.s)
@@ -112,7 +118,7 @@ class ColoredString(object):
 
 
 def clean(s):
-    strip = re.compile("([^-_a-zA-Z0-9!@#%&=,/'\";:~`\$\^\*\(\)\+\[\]\.\{\}\|\?\<\>\\]+|[^\s]+)")
+    strip = re.compile(r"([^-_a-zA-Z0-9!@#%&=,/'\";:~`\$\^\*\(\)\+\[\]\.\{\}\|\?\<\>\\]+|[^\s]+)")
     txt = strip.sub('', str(s))
 
     strip = re.compile(r'\[\d+m')
@@ -120,30 +126,15 @@ def clean(s):
 
     return txt
 
+_colors = {x: x.upper() for x in __all__[:-3]}
+_colors['normal'] = 'RESET'
 
-def black(string, always=False, bold=False):
-    return ColoredString('BLACK', string, always_color=always, bold=bold)
+for key, val in _colors.items():
+    function = eval(
+        'lambda s, always=False, bold=False: ColoredString("{}", s, always_color=always, bold=bold)'.format(val))
+    locals()[key] = function
 
-def red(string, always=False, bold=False):
-    return ColoredString('RED', string, always_color=always, bold=bold)
-
-def green(string, always=False, bold=False):
-    return ColoredString('GREEN', string, always_color=always, bold=bold)
-
-def yellow(string, always=False, bold=False):
-    return ColoredString('YELLOW', string, always_color=always, bold=bold)
-
-def blue(string, always=False, bold=False):
-    return ColoredString('BLUE', string, always_color=always, bold=bold)
-
-def magenta(string, always=False, bold=False):
-    return ColoredString('MAGENTA', string, always_color=always, bold=bold)
-
-def cyan(string, always=False, bold=False):
-    return ColoredString('CYAN', string, always_color=always, bold=bold)
-
-def white(string, always=False, bold=False):
-    return ColoredString('WHITE', string, always_color=always, bold=bold)
+del key, val, _colors, function
 
 def disable():
     """Disables colors."""
