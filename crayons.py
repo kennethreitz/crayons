@@ -18,8 +18,8 @@ PY3 = sys.version_info[0] >= 3
 
 __all__ = (
     'red', 'green', 'yellow', 'blue',
-    'black', 'magenta', 'cyan', 'white', 'normal',
-    'clean', 'disable'
+    'black', 'magenta', 'cyan', 'white',
+    'clean', 'disable', 'enable'
 )
 
 colorama.init()
@@ -141,3 +141,9 @@ def disable():
     global DISABLE_COLOR
 
     DISABLE_COLOR = True
+
+def enable():
+    """Enables colors."""
+    global DISABLE_COLOR
+
+    DISABLE_COLOR = False
