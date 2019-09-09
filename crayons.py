@@ -2,6 +2,7 @@
 """A simple and elegant wrapper for colorama."""
 
 import os
+from random import choice, seed
 import re
 import sys
 
@@ -13,11 +14,13 @@ PY3 = sys.version_info[0] >= 3
 __all__ = (
     'red', 'green', 'yellow', 'blue',
     'black', 'magenta', 'cyan', 'white',
-    'clean', 'disable', 'enable'
+    'clean', 'disable', 'enable', 'random'
 )
 
 colorama.init()
-COLORS = __all__[:-2]
+seed()
+COLORS = __all__[:-4]
+
 
 if 'get_ipython' in dir():
     """
@@ -123,7 +126,7 @@ def clean(s):
     return txt
 
 
-_colors = {x: x.upper() for x in __all__[:-3]}
+_colors = {x: x.upper() for x in COLORS}
 _colors['normal'] = 'RESET'
 
 for key, val in _colors.items():
@@ -132,6 +135,17 @@ for key, val in _colors.items():
     locals()[key] = function
 
 del key, val, _colors, function
+
+
+def random(string, always=False, bold=False, colors=COLORS):
+    """Selects a color at random from a list."""
+    colors = list(filter(lambda color: color in COLORS, colors)) or COLORS
+    return ColoredString(
+        choice(colors).upper(),
+        string,
+        always_color=always,
+        bold=bold
+    )
 
 
 def disable():
