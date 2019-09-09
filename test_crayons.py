@@ -1,5 +1,6 @@
 """Simple test of just running the README example. Better tests to come."""
 
+from __future__ import print_function
 import crayons
 
 print(crayons.red('red string'))
