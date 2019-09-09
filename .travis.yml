@@ -7,7 +7,9 @@ python:
   - '3.8-dev'
 
 install:
-  - pip install colorama
+  - pip install colorama flake8 flake8-bugbear
 
 script:
+  - flake8
   - python test_crayons.py
+  - python setup.py install
