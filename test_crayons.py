@@ -44,5 +44,5 @@ print(clean('{} clean {}'.format(red('red'), blue('blue'))))  # NOQA
 
 crayons.replace_colors({'magenta': 'blue'})
 print(crayons.magenta('this is blue!'))
-crayons.reset_replace()
+crayons.reset_replace_colors()
 print(crayons.magenta('this is magenta again!'))

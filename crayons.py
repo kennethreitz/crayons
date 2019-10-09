@@ -17,7 +17,8 @@ COLORS = (
 )
 
 __all__ = COLORS + (
-    'normal', 'clean', 'disable', 'enable', 'random', 'replace_colors'
+    'normal', 'clean', 'disable', 'enable', 'random',
+    'replace_colors', 'reset_replace_colors'
 )
 
 colorama.init()
@@ -169,7 +170,7 @@ def replace_colors(replace_dict):
     REPLACE_COLORS = {k.upper(): v.upper() for k, v in replace_dict.items()}
 
 
-def reset_replace():
+def reset_replace_colors():
     """Reset any set replace colors."""
     global REPLACE_COLORS
 
