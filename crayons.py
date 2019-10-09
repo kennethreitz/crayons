@@ -168,3 +168,10 @@ def replace_colors(replace_dict):
 
     assert isinstance(replace_dict, dict)
     REPLACE_COLORS = {k.upper(): v.upper() for k, v in replace_dict.items()}
+
+
+def reset_replace():
+    """Reset any set replace colors."""
+    global REPLACE_COLORS
+
+    REPLACE_COLORS = {}
