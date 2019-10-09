@@ -11,11 +11,13 @@ import colorama
 PY3 = sys.version_info[0] >= 3
 
 
-__all__ = (
+COLORS = (
     'red', 'green', 'yellow', 'blue',
-    'black', 'magenta', 'cyan', 'white',
-    'clean', 'disable', 'enable', 'random',
-    'replace_colors'
+    'black', 'magenta', 'cyan', 'white'
+)
+
+__all__ = COLORS + (
+    'normal', 'clean', 'disable', 'enable', 'random', 'replace_colors'
 )
 
 colorama.init()
