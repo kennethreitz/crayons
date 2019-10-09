@@ -2,7 +2,7 @@
 
 from __future__ import print_function
 import crayons
-from crayons import *
+from crayons import *  # NOQA
 
 print(crayons.red('red string'))
 print('{} white {}'.format(crayons.red('red'), crayons.blue('blue')))
@@ -27,17 +27,20 @@ print(crayons.magenta('magenta'))
 print(crayons.cyan('cyan'))
 print(crayons.white('white'))
 print(crayons.normal('normal'))
-print(crayons.clean('{} clean {}'.format(crayons.red('red'), crayons.blue('blue'))))
-print(red('red'))
-print(green('green'))
-print(yellow('yellow'))
-print(blue('blue'))
-print(black('black', bold=True))
-print(magenta('magenta'))
-print(cyan('cyan'))
-print(white('white'))
-print(normal('normal'))
-print(clean('{} clean {}'.format(red('red'), blue('blue'))))
+print(crayons.clean('{} clean {}'.format(
+    crayons.red('red'),
+    crayons.blue('blue')
+)))
+print(red('red'))  # NOQA
+print(green('green'))  # NOQA
+print(yellow('yellow'))  # NOQA
+print(blue('blue'))  # NOQA
+print(black('black', bold=True))  # NOQA
+print(magenta('magenta'))  # NOQA
+print(cyan('cyan'))  # NOQA
+print(white('white'))  # NOQA
+print(normal('normal'))  # NOQA
+print(clean('{} clean {}'.format(red('red'), blue('blue'))))  # NOQA
 
 crayons.replace_colors({'magenta': 'blue'})
 print(crayons.magenta('this is blue!'))
