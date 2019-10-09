@@ -31,7 +31,7 @@ required = [
 
 setup(
     name='crayons',
-    version='0.2.0',
+    version='0.3.0',
     description='TextUI colors for Python.',
     long_description=long_description,
     author='Kenneth Reitz',
