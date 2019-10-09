@@ -14,13 +14,14 @@ PY3 = sys.version_info[0] >= 3
 __all__ = (
     'red', 'green', 'yellow', 'blue',
     'black', 'magenta', 'cyan', 'white',
-    'clean', 'disable', 'enable', 'random'
+    'clean', 'disable', 'enable', 'random',
+    'replace_colors'
 )
 
 colorama.init()
+COLORS = __all__[:-5]
+REPLACE_COLORS = {}
 seed()
-COLORS = __all__[:-4]
-
 
 if 'get_ipython' in dir():
     """
@@ -45,7 +46,7 @@ class ColoredString(object):
             self.s = s.encode('utf-8')
         else:
             self.s = s
-        self.color = color
+        self.color = REPLACE_COLORS.get(color, color)
         self.always_color = always_color
         self.bold = bold
         if os.environ.get('CLINT_FORCE_COLOR'):
@@ -160,3 +161,11 @@ def enable():
     global DISABLE_COLOR
 
     DISABLE_COLOR = False
+
+
+def replace_colors(replace_dict):
+    """Replace colors to customize the look under specific background."""
+    global REPLACE_COLORS
+
+    assert isinstance(replace_dict, dict)
+    REPLACE_COLORS = {k.upper(): v.upper() for k, v in replace_dict.items()}
