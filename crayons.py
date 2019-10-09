@@ -21,7 +21,6 @@ __all__ = COLORS + (
 )
 
 colorama.init()
-COLORS = __all__[:-5]
 REPLACE_COLORS = {}
 seed()
 
