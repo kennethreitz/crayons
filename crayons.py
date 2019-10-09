@@ -119,16 +119,6 @@ class ColoredString(object):
         return ColoredString(self.color, s)
 
 
-def clean(s):
-    strip = re.compile(r"([^-_a-zA-Z0-9!@#%&=,/'\";:~`\$\^\*\(\)\+\[\]\.\{\}\|\?\<\>\\]+|[^\s]+)")  # noqa: E501
-    txt = strip.sub('', str(s))
-
-    strip = re.compile(r'\[\d+m')
-    txt = strip.sub('', txt)
-
-    return txt
-
-
 _colors = {x: x.upper() for x in COLORS}
 _colors['normal'] = 'RESET'
 
@@ -138,6 +128,13 @@ for key, val in _colors.items():
     locals()[key] = function
 
 del key, val, _colors, function
+
+
+def clean(s):
+    strip = re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]')
+    txt = strip.sub('', s)
+
+    return txt
 
 
 def random(string, always=False, bold=False, colors=COLORS):
