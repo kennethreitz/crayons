@@ -47,7 +47,7 @@ class ColoredString(object):
         if not PY3 and isinstance(s, unicode):  # noqa: F821
             self.s = s.encode('utf-8')
         else:
-            self.s = s
+            self.s = str(s)
         self.color = REPLACE_COLORS.get(color, color)
         self.always_color = always_color
         self.bold = bold
