@@ -2,10 +2,10 @@ Crayons: Text UI colors for Python.
 ===================================
 
 .. image:: https://img.shields.io/pypi/v/crayons.svg
-    :target: https://pypi.python.org/pypi/crayons
+    :target: https://pypi.org/project/crayons/
 
-.. image:: https://travis-ci.com/MasterOdin/crayons.svg?branch=master
-    :target: https://travis-ci.com/MasterOdin/crayons
+.. image:: https://github.com/MasterOdin/crayons/workflows/Test/badge.svg
+    :target: https://github.com/MasterOdin/crayons/actions?query=workflow%3ATest+branch%3Amaster
 
 .. image:: https://img.shields.io/pypi/l/crayons.svg
     :target: https://pypi.python.org/pypi/crayons
