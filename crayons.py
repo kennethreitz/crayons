@@ -80,7 +80,9 @@ class ColoredString(object):
 
         if self.always_color:
             return c
-        elif sys.stdout.isatty() and not DISABLE_COLOR:
+        elif hasattr(sys.stdout, 'isatty') \
+                and sys.stdout.isatty() \
+                and not DISABLE_COLOR:
             return c
         else:
             return self.s
